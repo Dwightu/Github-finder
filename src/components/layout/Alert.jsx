@@ -3,12 +3,12 @@ import AlertContext from '../../context/alert/AlertContext'
 
 
 function Alert() {
-    const { alert } = useContext(AlertContext)
+    const { msg, type } = useContext(AlertContext)
 
     return (
         <div
             className={`grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 gap-8 mb-4`}
-            style={{ visibility: alert ? 'visible' : 'hidden' }}
+            style={{ visibility: msg === '' ? 'hidden' : 'visible' }}
         >
             <div className='alert alert-error'>
                 <div>
@@ -24,7 +24,7 @@ function Alert() {
                             d='M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636'
                         ></path>
                     </svg>
-                    <strong>{alert?.msg}</strong>
+                    <strong>{msg}</strong>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import { createRenderer } from "react-dom/test-utils";
 
 import githubReducer from "./GithubReducer";
 
@@ -46,8 +47,6 @@ export const GithubProvider = ({ children }) => {
 
     //Get Search Result
     const searchUsers = async (text) => {
-
-
         setLoading()
         const params = new URLSearchParams(
             {
@@ -71,6 +70,34 @@ export const GithubProvider = ({ children }) => {
         // setLoading(false)
     }
 
+    //get user repos
+    const getUserRepos = async (login) => {
+        setLoading()
+
+        const params = new URLSearchParams(
+            {
+                sort: 'created',
+                per_page: 10
+            }
+        )
+
+        const responce = await fetch(`${GITHUB_URL}/users/${login}/repos?${params}`, {
+            // headers: {
+            //     Authorization: `token ${GITHUB_TOKEN}`
+            // }
+        })
+
+
+        const data = await responce.json()
+        console.log(data)
+        dispatch({
+            type: 'GET_REPOS',
+            payload: data
+        })
+
+        // setLoading(false)
+    }
+
     //Create Clear Function
     const clearUsers = () => {
         dispatch({
@@ -85,7 +112,7 @@ export const GithubProvider = ({ children }) => {
         type: 'SET_LOADING'
     })
 
-    return <GithubContext.Provider value={{ repos: state.repos, user: state.user, users: state.users, loading: state.loading, searchUsers, clearUsers, getUser: searchUser }}>{children}</GithubContext.Provider>
+    return <GithubContext.Provider value={{ getUserRepos, repos: state.repos, user: state.user, users: state.users, loading: state.loading, searchUsers, clearUsers, getUser: searchUser }}>{children}</GithubContext.Provider>
 
 }
 

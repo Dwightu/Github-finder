@@ -3,7 +3,7 @@ import AlertContext from '../../context/alert/AlertContext'
 
 
 function Alert() {
-    const { msg, type } = useContext(AlertContext)
+    const { msg } = useContext(AlertContext)
 
     return (
         <div

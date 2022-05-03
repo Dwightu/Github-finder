@@ -3,7 +3,7 @@
 This is a project made by me which helps me pratice react skills. It allows users to search Github users and display their info. Implement by Github REST API. <br/>
 Docs are here: `https://docs.github.com/en/rest`
 
-### Check here: https://master.dd9pl43yuyk1l.amplifyapp.com/
+### Check here: https://dwightu.github.io/Github-finder/
 
 ### Demo
 - Firsly, you can search your github username on Home Page.

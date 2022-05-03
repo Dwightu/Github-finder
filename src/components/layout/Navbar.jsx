@@ -22,11 +22,14 @@ function Navbar({ title }) {
                         <Link to='/about' className='btn btn-ghost btn-sm rounded-btn'>
                             About
                         </Link>
+                        <a href='https://github.com/Dwightu/Github-finder' className='btn btn-ghost btn-sm rounded-btn'>
+                            Source_code
+                        </a>
                     </div>
                 </div>
 
             </div>
-        </nav>
+        </nav >
     )
 }
 

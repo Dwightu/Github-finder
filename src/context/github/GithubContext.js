@@ -36,10 +36,13 @@ export const GithubProvider = ({ children }) => {
         }
         else {
             const data = await responce.json()
-            dispatch({
-                type: 'GET_USER',
-                payload: data
-            })
+            setTimeout(() => {
+                dispatch({
+                    type: 'GET_USER',
+                    payload: data
+                })
+            }, 1000)
+
         }
 
         // setLoading(false)
@@ -66,7 +69,7 @@ export const GithubProvider = ({ children }) => {
                 type: 'GET_USERS',
                 payload: items,
             })
-        }, 500);
+        }, 1000);
         // setLoading(false)
     }
 
